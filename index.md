@@ -2,122 +2,97 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+# [](#home)Home
 
-[Link to another page](another-page).
+**Welcome to my website!**
 
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# [](#header-1)Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## [](#header-2)Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### [](#header-3)Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### [](#header-4)Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### [](#header-5)Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### [](#header-6)Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
+My working esperiences are related to Linux O.S. programming for embedded and desktop environments, in order to develop practical applications (e.g. the European project DIRHA and the product ESA EW900) while finding the best solutions matching the project objectives.
 
 * * *
 
-### Here is an unordered list:
+# [](#curriculum)Curriculum
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
+## [](#work_experience)Work experience
 
-### And an ordered list:
+### Software Developer - Enetec Ecoform Srl
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
+**Apr 2017 - Present**
 
-### And a nested list:
+Linux embedded software developer, C++, Qt framework, Amazon Web Services (AWS), SQL.
 
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
+### Junior Project Engineer - ESA Energy
 
-### Small image
+**Jul 2015 - Mar 2017**
 
-![](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
+Linux embedded and C/C++ software programming of the [ESA EW900 Data Manager](https://www.esa-automation.com/en/products/smart-meter/ew900/) - Monitoring concentrator of energy consumption data from networks of distributed smart meters.
 
-### Large image
+### Collaborator/Junior Researcher - FBK
 
-![](https://guides.github.com/activities/hello-world/branching.png)
+**Apr 2013 - Jun 2015**
 
+I worked in the [SHINE](http://shine.fbk.eu/) group of [Fondazione Bruno Kessler](http://www.fbk.eu/) (FBK) as C/C++ programmer for the DIRHA european project, with the goal of building a Dialogue Management system. During this period my main research task has been related to automatic lyrics-to-audio alignment and other similar activities.
 
-### Definition lists can be used with HTML syntax.
+## [](#languages)Languages
 
 <dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
+<dt>Italian</dt>
+<dd>Mother tongue</dd>
+<dt>English</dt>
+<dd>Independent user (B2)</dd>
+<dt>German</dt>
+<dd>Basic user (A2)</dd>
 </dl>
 
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
+## [](#education)Education
 
-```
-The final element.
-```
+### Master Degree in Telecommunications Engineering
+
+**Nov 2010 - Mar 2013**
+
+Università degli Studi di Trento, Department of Information Engineering and Computer Science.
+
+Thesis: [Automatic segmentation of singing voice in phone units](http://www5.unitn.it/Biblioteca/it/Web/RichiestaConsultazioneTesi/351817).
+
+### Bachelor Degree in Telecommunications Engineering
+
+**Sep 2006 - Oct 2010**
+
+Università degli Studi di Trento, Department of Information Engineering and Computer Science.
+
+Thesis: [Caratterizzazione elettro-ottica di rivelatori di radiazioni 3D-DDTC](http://www.infn.it/thesis/PDF/getfile.php?filename=5003-Pellin-triennale.pdf).
+
+* * *
+
+# [](#projects)Other Projects
+
+## Center of Pupil Detection from Images
+The goal was to add novel contributions to the research of "Center of Pupil Detection".
+[Download Pdf](http://docs.wixstatic.com/ugd/3db9ba_074e16bbef0d40b7aeb86edf5e0ece5d.pdf)
+
+## A High Availability Locking Service
+The goal of the project was to create a locking service with high availability, using a fixed set of servers: one master and many replicas. The whole project is done under Linux using C code and RPC as communication technique.
+[Download Pdf](http://docs.wixstatic.com/ugd/3db9ba_ce25597a55f74cc49a795f8bb07f6265.pdf)
+
+## Digital pedometer using the eZ430-Chronos development system
+Development of a pedometer exploiting the accelerometer data of the eZ430-Chronos device and its embedded C programmability.
+[Download Pdf](http://docs.wixstatic.com/ugd/3db9ba_02d21e071ef640fb990e50f8a35560a4.pdf)
+
+## Dissecting Skype
+The objective of the project was to reverse engineer the working functionalities of Skype, by sniffing and analysing the traffic generated by the application on user's machine.
+[Download Pdf](http://docs.wixstatic.com/ugd/3db9ba_35b7a491f8b14d809dc259a8d4ebbea5.pdf)
+
+## A Self-Organizing Traffic Information System (SOTIS) for a city scenario
+The goal was to add novel theoretical contributions to the Vehicle-to-Vehicle (V2V) and Vehicular Ad-hoc Network (VANET) communication scenarios.
+[Download Pdf](http://docs.wixstatic.com/ugd/3db9ba_1979971f3b21448db8f8f623d0bb6425.pdf)
+
+* * *
+
+# [](#pubblications)Pubblications
+
+G. Tryfou, M. Pellin, M. Omologo, "[Time-frequency Reassigned Cepstral Coefficients for Phone-Level Speech Segmentation](http://www.eurasip.org/Proceedings/Eusipco/Eusipco2014/HTML/papers/1569923161.pdf)", in Proceeding of the European Signal Processing Conference, EUSIPCO 2014, Lisbon, Portugal.
+
+M. Ravanelli, L. Cristoforetti, R. Gretter, M. Pellin, A. Sosi, M. Omologo, "[The DIRHA-English corpus and related tasks for distant-speech recognition in domestic environments](http://ieeexplore.ieee.org/document/7404805/)", ASRU 2015, Scottsdale, Arizona, USA.
+
+* * *
+
+_Last update: 25/06/2017_
