@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: layout1
 ---
 
 # [](#home)Home
