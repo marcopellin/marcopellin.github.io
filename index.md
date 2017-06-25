@@ -4,7 +4,8 @@ layout: default
 
 # [](#home)Home
 
-**Welcome to my website:** my working esperiences are related to Linux embedded and desktop environments, from managing kernel and filesystem, to programming software mainly with C/C++ language.
+**Welcome to my website**  
+My working esperiences are related to Linux embedded and desktop environments, from managing kernel and filesystem, to programming software mainly with C/C++ language.
 
 * * *
 
@@ -12,19 +13,16 @@ layout: default
 
 ## [](#work_experience)Work experience
 
-### Software Developer - Enetec Ecoform Srl <br />
-**Apr 2017 - Present**
-
+### Software Developer - Enetec Ecoform Srl
+**Apr 2017 - Present**  
 Linux embedded software developer, C++, Qt framework, Amazon Web Services (AWS), SQL.
 
-### Junior Project Engineer - ESA Energy <br />
-**Jul 2015 - Mar 2017**
-
+### Junior Project Engineer - ESA Energy
+**Jul 2015 - Mar 2017**  
 Linux embedded and C/C++ software programming of the [ESA EW900 Data Manager](https://www.esa-automation.com/en/products/smart-meter/ew900/), a monitoring concentrator of energy consumption data from networks of distributed smart meters.
 
-### Collaborator/Junior Researcher - FBK <br />
-**Apr 2013 - Jun 2015**
-
+### Collaborator/Junior Researcher - FBK
+**Apr 2013 - Jun 2015**  
 C/C++ programmer of a Dialogue Management system for the DIRHA european project in the [SHINE](http://shine.fbk.eu/) group of [Fondazione Bruno Kessler](http://www.fbk.eu/) (FBK). During the working period my main research task has been related to automatic lyrics-to-audio alignment and other similar activities.
 
 ## [](#languages)Languages
@@ -40,15 +38,13 @@ C/C++ programmer of a Dialogue Management system for the DIRHA european project 
 
 ## [](#education)Education
 
-### Master Degree in Telecommunications Engineering <br />
-**Nov 2010 - Mar 2013**
-
+### Master Degree in Telecommunications Engineering
+**Nov 2010 - Mar 2013**  
 Università degli Studi di Trento, Department of Information Engineering and Computer Science. <br />
 Thesis: [Automatic segmentation of singing voice in phone units](http://www5.unitn.it/Biblioteca/it/Web/RichiestaConsultazioneTesi/351817).
 
-### Bachelor Degree in Telecommunications Engineering <br />
-**Sep 2006 - Oct 2010**
-
+### Bachelor Degree in Telecommunications Engineering
+**Sep 2006 - Oct 2010**  
 Università degli Studi di Trento, Department of Information Engineering and Computer Science. <br />
 Thesis: [Caratterizzazione elettro-ottica di rivelatori di radiazioni 3D-DDTC](http://www.infn.it/thesis/PDF/getfile.php?filename=5003-Pellin-triennale.pdf).
 
