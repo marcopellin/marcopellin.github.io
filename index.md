@@ -14,7 +14,7 @@ My working esperiences are related to Linux embedded and desktop environments, f
 
 ## [](#work_experience)Work experience
 
-### Software Developer - Enetec Ecoform Srl
+### Software Developer - Enetec Spa
 **Apr 2017 - Present**  
 Linux embedded software developer, C++, Qt framework, Amazon Web Services (AWS), SQL.
 
