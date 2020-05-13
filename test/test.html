@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Piazza del Grano</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/before-after-slider@latest/dist/slider.bundle.js"></script>
+</head>
+<body>
+  <h1 style="text-align: center;">Piazza del Grano</h1>
+  <p style="text-align: center;">Slider1: [ width: 90%, height: 400px, line: false ]</p>
+  <div id="slider1"></div>
+  <p style="text-align: center;">Slider2: [ width: 70% ]</p>
+  <div id="slider2"></div>
+
+
+  <script>
+    window.onload = function() {
+      new SliderBar({
+        el: "#slider1",
+        beforeImg: '../img/PiazzaDelGrano01.jpg',
+        afterImg: '../img/PiazzaDelGrano02.jpg',
+        width: "90%",
+        height: "400px",
+        line: false
+      });
+      new SliderBar({
+        el: "#slider2",
+        beforeImg: '../img/PiazzaDelGrano01.jpg',
+        afterImg: '../img/PiazzaDelGrano02.jpg',
+        width: "70%",
+		height: "800px",
+		line: false
+      })
+    }
+  </script>
+</body>
+</html>
