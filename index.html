@@ -81,6 +81,111 @@
             color: var(--accent);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--accent);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 2px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 64px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 64px);
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 2rem 1.5rem;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--border);
+                gap: 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .lang-switcher {
+                margin-top: 2rem;
+                padding-top: 2rem;
+                border-top: 1px solid var(--border);
+                justify-content: center;
+            }
+        }
+
         /* Container */
         .container {
             max-width: 1200px;
@@ -493,12 +598,21 @@
     <header>
         <nav>
             <a href="#" class="logo">Marco Pellin</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+                <li><a href="#education" onclick="closeMenu()">Education</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+                <li class="lang-switcher">
+                    <button class="lang-btn active" onclick="switchLanguage('it')">IT</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+                </li>
             </ul>
         </nav>
     </header>
@@ -797,5 +911,363 @@
             <p style="margin-top: 0.5rem; font-size: 0.85rem;">Software Development Team Lead | Embedded Linux | Agile Methodologies</p>
         </div>
     </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Language Switcher
+        const translations = {
+            it: {
+                // Hero section
+                title: "Software Development Team Lead",
+                subtitle: "Manager • Agile Practitioner • Embedded Linux Developer",
+                about: "Software Development Team Lead con esperienza consolidata nella gestione di team e progetti software. Credo fermamente che team motivati, con la giusta pianificazione e comunicazione efficace con clienti e fornitori, portino a prodotti solidi e di valore. Background tecnico in sviluppo embedded Linux, Qt e C++.",
+                
+                // Section titles
+                experienceTitle: "Esperienza Professionale",
+                experienceSubtitle: "Il mio percorso da developer a team lead",
+                projectsTitle: "Progetti",
+                projectsSubtitle: "Side projects e sperimentazioni personali",
+                educationTitle: "Formazione",
+                educationSubtitle: "Percorso accademico e certificazioni professionali",
+                contactTitle: "Contatti",
+                contactSubtitle: "Restiamo in contatto",
+                contactText: "Interessato a collaborare o vuoi semplicemente fare una chiacchierata?",
+                
+                // Labels
+                certifications: "Certificazioni",
+                publications: "Pubblicazioni Scientifiche",
+                academicProjects: "Progetti Accademici",
+                current: "Current",
+                
+                // Experience items
+                exp1: {
+                    title: "Software Development Team Lead",
+                    company: "Enetec - your OEM Partner",
+                    date: "Gen 2021 - Presente · 4 anni",
+                    description: "Responsabile del team di sviluppo software e della gestione dei progetti. Coordino le attività del team, pianificazione agile, gestione delle relazioni con clienti e fornitori, e supervisione tecnica dei prodotti. Riferimento diretto per il responsabile del dipartimento tecnico."
+                },
+                exp2: {
+                    title: "Software Developer",
+                    company: "Enetec",
+                    date: "Apr 2017 - Presente · 8 anni",
+                    description: "Sviluppo di interfacce utente per sistemi Linux embedded utilizzando Qt framework. Gestione periferiche di rete (Ethernet, Wi-Fi), comunicazioni seriali via Modbus (ASCII, RTU, TCP/IP), connettività cloud tramite protocollo MQTT e Amazon Web Services (AWS). Esperienza con hardware Z-Wave e ESP32."
+                },
+                exp3: {
+                    title: "Software Developer",
+                    company: "ESA Automation",
+                    date: "Lug 2015 - Mar 2017 · 1 anno 9 mesi",
+                    description: "Sviluppatore Linux embedded del sistema ESA EW900 Data Manager, concentratore per il monitoraggio dei consumi energetici da reti di smart meter distribuiti. Programmazione C/C++ della business logic, gestione periferiche di rete (Ethernet, Wi-Fi, 3G/GPRS), comunicazioni Modbus RTU, filesystem costruito con Yocto e gestione kernel."
+                },
+                exp4: {
+                    title: "Collaborator - Junior Researcher",
+                    company: "Fondazione Bruno Kessler (FBK)",
+                    date: "Apr 2013 - Giu 2015 · 2 anni 3 mesi",
+                    description: "Collaboratore nel gruppo SHINE (Speech and Acoustic Scene Analysis and Interpretation). Studi sull'allineamento forzato di parlato e voce cantata. Programmazione C/C++ per lo sviluppo di un sistema di Dialogue Management per il progetto europeo DIRHA (Distant-speech Interaction for Robust Home Applications)."
+                },
+                
+                // Projects
+                proj1: {
+                    title: "Table Football",
+                    description: "Sito statico per il tracking delle partite di calcio balilla. Demo di applicazione web moderna e responsive.",
+                    liveDemo: "Live Demo",
+                    githubRepo: "GitHub Repo"
+                },
+                proj2: {
+                    title: "Altri Progetti GitHub",
+                    description: "Esplora i miei altri progetti e contributi open source sul mio profilo GitHub.",
+                    allRepos: "Tutti i Repository"
+                },
+                
+                // Academic projects
+                acadProj1: {
+                    title: "Center of Pupil Detection from Images",
+                    description: "Contributi alla ricerca nel campo della rilevazione del centro della pupilla da immagini."
+                },
+                acadProj2: {
+                    title: "A High Availability Locking Service",
+                    description: "Servizio di locking ad alta disponibilità con architettura master-replica, sviluppato in C con RPC su Linux. Obiettivo: garantire high availability attraverso un set fisso di server."
+                },
+                acadProj3: {
+                    title: "Digital Pedometer (eZ430-Chronos)",
+                    description: "Sviluppo di un pedometro digitale sfruttando i dati dell'accelerometro del dispositivo eZ430-Chronos e la sua programmabilità embedded in C."
+                },
+                acadProj4: {
+                    title: "Dissecting Skype",
+                    description: "Reverse engineering delle funzionalità di Skype attraverso sniffing e analisi del traffico generato dall'applicazione sulla macchina dell'utente."
+                },
+                acadProj5: {
+                    title: "SOTIS - Self-Organizing Traffic Information System",
+                    description: "Contributi teorici innovativi alle comunicazioni V2V (Vehicle-to-Vehicle) e VANET (Vehicular Ad-hoc Network) per scenari urbani."
+                },
+                
+                // Education
+                edu1: {
+                    title: "Master's Degree in Telecommunications Engineering",
+                    meta: "Università degli Studi di Trento • 2010 - 2013 • Voto: 106/110",
+                    thesis: "Tesi: \"Automatic segmentation of singing voice in phone units\" - Segmentazione automatica della voce cantata in unità fonetiche."
+                },
+                edu2: {
+                    title: "Bachelor's Degree in Telecommunications Engineering",
+                    meta: "Università degli Studi di Trento • 2006 - 2010",
+                    thesis: "Tesi: \"Caratterizzazione elettro-ottica di rivelatori di radiazioni 3D-DDTC\""
+                }
+            },
+            en: {
+                // Hero section
+                title: "Software Development Team Lead",
+                subtitle: "Manager • Agile Practitioner • Embedded Linux Developer",
+                about: "Software Development Team Lead with solid experience in team and project management. I strongly believe that motivated teams, with proper planning and effective communication with customers and suppliers, lead to solid and valuable products. Technical background in embedded Linux development, Qt and C++.",
+                
+                // Section titles
+                experienceTitle: "Professional Experience",
+                experienceSubtitle: "My journey from developer to team lead",
+                projectsTitle: "Projects",
+                projectsSubtitle: "Side projects and personal experiments",
+                educationTitle: "Education",
+                educationSubtitle: "Academic background and professional certifications",
+                contactTitle: "Contact",
+                contactSubtitle: "Let's stay in touch",
+                contactText: "Interested in collaborating or just want to have a chat?",
+                
+                // Labels
+                certifications: "Certifications",
+                publications: "Scientific Publications",
+                academicProjects: "Academic Projects",
+                current: "Current",
+                
+                // Experience items
+                exp1: {
+                    title: "Software Development Team Lead",
+                    company: "Enetec - your OEM Partner",
+                    date: "Jan 2021 - Present · 4 years",
+                    description: "Responsible for the software development team and project management. I coordinate team activities, agile planning, customer and supplier relationship management, and technical product oversight. Direct reference to the head of the technical department."
+                },
+                exp2: {
+                    title: "Software Developer",
+                    company: "Enetec",
+                    date: "Apr 2017 - Present · 8 years",
+                    description: "Development of user interfaces for embedded Linux systems using Qt framework. Network peripherals management (Ethernet, Wi-Fi), serial communications via Modbus (ASCII, RTU, TCP/IP), cloud connectivity through MQTT protocol and Amazon Web Services (AWS). Experience with Z-Wave and ESP32-based hardware."
+                },
+                exp3: {
+                    title: "Software Developer",
+                    company: "ESA Automation",
+                    date: "Jul 2015 - Mar 2017 · 1 year 9 months",
+                    description: "Embedded Linux developer of the ESA EW900 Data Manager system, a monitoring concentrator for energy consumption data from distributed smart meter networks. C/C++ programming of business logic, network peripherals management (Ethernet, Wi-Fi, 3G/GPRS), Modbus RTU communications, filesystem built with Yocto, and kernel management."
+                },
+                exp4: {
+                    title: "Collaborator - Junior Researcher",
+                    company: "Fondazione Bruno Kessler (FBK)",
+                    date: "Apr 2013 - Jun 2015 · 2 years 3 months",
+                    description: "Collaborator in the SHINE group (Speech and Acoustic Scene Analysis and Interpretation). Research on forced alignment of speech and singing voice. C/C++ programming for the development of a Dialogue Management system for the European project DIRHA (Distant-speech Interaction for Robust Home Applications)."
+                },
+                
+                // Projects
+                proj1: {
+                    title: "Table Football",
+                    description: "Static website for tracking table football matches. Demo of a modern and responsive web application.",
+                    liveDemo: "Live Demo",
+                    githubRepo: "GitHub Repo"
+                },
+                proj2: {
+                    title: "Other GitHub Projects",
+                    description: "Explore my other projects and open source contributions on my GitHub profile.",
+                    allRepos: "All Repositories"
+                },
+                
+                // Academic projects
+                acadProj1: {
+                    title: "Center of Pupil Detection from Images",
+                    description: "Contributions to research in the field of pupil center detection from images."
+                },
+                acadProj2: {
+                    title: "A High Availability Locking Service",
+                    description: "High availability locking service with master-replica architecture, developed in C with RPC on Linux. Goal: ensure high availability through a fixed set of servers."
+                },
+                acadProj3: {
+                    title: "Digital Pedometer (eZ430-Chronos)",
+                    description: "Development of a digital pedometer exploiting accelerometer data from the eZ430-Chronos device and its embedded C programmability."
+                },
+                acadProj4: {
+                    title: "Dissecting Skype",
+                    description: "Reverse engineering of Skype functionalities through sniffing and analysis of traffic generated by the application on the user's machine."
+                },
+                acadProj5: {
+                    title: "SOTIS - Self-Organizing Traffic Information System",
+                    description: "Innovative theoretical contributions to V2V (Vehicle-to-Vehicle) and VANET (Vehicular Ad-hoc Network) communications for urban scenarios."
+                },
+                
+                // Education
+                edu1: {
+                    title: "Master's Degree in Telecommunications Engineering",
+                    meta: "University of Trento • 2010 - 2013 • Grade: 106/110",
+                    thesis: "Thesis: \"Automatic segmentation of singing voice in phone units\" - Automatic segmentation of singing voice into phonetic units."
+                },
+                edu2: {
+                    title: "Bachelor's Degree in Telecommunications Engineering",
+                    meta: "University of Trento • 2006 - 2010",
+                    thesis: "Thesis: \"Electro-optical characterization of 3D-DDTC radiation detectors\""
+                }
+            }
+        };
+
+        function switchLanguage(lang) {
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content
+            const t = translations[lang];
+            
+            // Helper function to safely update element
+            const updateElement = (selector, content) => {
+                const el = document.querySelector(selector);
+                if (el) el.textContent = content;
+            };
+            
+            const updateElementByIndex = (selector, index, content) => {
+                const els = document.querySelectorAll(selector);
+                if (els[index]) els[index].textContent = content;
+            };
+            
+            // Hero section
+            updateElement('.hero h1', t.title);
+            updateElement('.hero .subtitle', t.subtitle);
+            updateElement('.hero .about', t.about);
+            
+            // Section titles
+            updateElementByIndex('.section-title', 0, t.experienceTitle);
+            updateElementByIndex('.section-subtitle', 0, t.experienceSubtitle);
+            
+            updateElementByIndex('.section-title', 1, t.projectsTitle);
+            updateElementByIndex('.section-subtitle', 1, t.projectsSubtitle);
+            
+            updateElementByIndex('.section-title', 2, t.educationTitle);
+            updateElementByIndex('.section-subtitle', 2, t.educationSubtitle);
+            
+            updateElementByIndex('.section-title', 3, t.contactTitle);
+            updateElementByIndex('.section-subtitle', 3, t.contactSubtitle);
+            
+            // Contact text
+            const contactText = document.querySelector('#contact p[style*="font-size: 1.2rem"]');
+            if (contactText) contactText.textContent = t.contactText;
+            
+            // Update labels
+            updateElement('.academic-projects h3', t.academicProjects);
+            updateElement('.publications h3', t.publications);
+            
+            const certTitle = document.querySelector('section#education > h3');
+            if (certTitle) certTitle.textContent = t.certifications;
+            
+            updateElement('.status-badge', t.current);
+            
+            // Experience items
+            const expItems = document.querySelectorAll('.experience-item');
+            if (expItems[0]) {
+                expItems[0].querySelector('h3').childNodes[0].textContent = t.exp1.title + ' ';
+                expItems[0].querySelector('.company').textContent = t.exp1.company;
+                expItems[0].querySelector('.experience-date').textContent = t.exp1.date;
+                expItems[0].querySelector('.experience-description').textContent = t.exp1.description;
+            }
+            if (expItems[1]) {
+                expItems[1].querySelector('h3').textContent = t.exp2.title;
+                expItems[1].querySelector('.company').textContent = t.exp2.company;
+                expItems[1].querySelector('.experience-date').textContent = t.exp2.date;
+                expItems[1].querySelector('.experience-description').textContent = t.exp2.description;
+            }
+            if (expItems[2]) {
+                expItems[2].querySelector('h3').textContent = t.exp3.title;
+                expItems[2].querySelector('.company').textContent = t.exp3.company;
+                expItems[2].querySelector('.experience-date').textContent = t.exp3.date;
+                expItems[2].querySelector('.experience-description').textContent = t.exp3.description;
+            }
+            if (expItems[3]) {
+                expItems[3].querySelector('h3').textContent = t.exp4.title;
+                expItems[3].querySelector('.company').textContent = t.exp4.company;
+                expItems[3].querySelector('.experience-date').textContent = t.exp4.date;
+                expItems[3].querySelector('.experience-description').textContent = t.exp4.description;
+            }
+            
+            // Project cards
+            const projCards = document.querySelectorAll('.project-card');
+            if (projCards[0]) {
+                projCards[0].querySelector('h3').textContent = t.proj1.title;
+                projCards[0].querySelector('p').textContent = t.proj1.description;
+                const projLinks = projCards[0].querySelectorAll('.project-link');
+                if (projLinks[0]) projLinks[0].innerHTML = '<span>🌐</span> ' + t.proj1.liveDemo;
+                if (projLinks[1]) projLinks[1].innerHTML = '<span>📁</span> ' + t.proj1.githubRepo;
+            }
+            if (projCards[1]) {
+                projCards[1].querySelector('h3').textContent = t.proj2.title;
+                projCards[1].querySelector('p').textContent = t.proj2.description;
+                const projLink = projCards[1].querySelector('.project-link');
+                if (projLink) projLink.innerHTML = '<span>📂</span> ' + t.proj2.allRepos;
+            }
+            
+            // Academic projects
+            const acadProjs = document.querySelectorAll('.academic-projects li');
+            if (acadProjs[0]) {
+                acadProjs[0].querySelector('strong').textContent = t.acadProj1.title;
+                acadProjs[0].querySelector('p').textContent = t.acadProj1.description;
+            }
+            if (acadProjs[1]) {
+                acadProjs[1].querySelector('strong').textContent = t.acadProj2.title;
+                acadProjs[1].querySelector('p').textContent = t.acadProj2.description;
+            }
+            if (acadProjs[2]) {
+                acadProjs[2].querySelector('strong').textContent = t.acadProj3.title;
+                acadProjs[2].querySelector('p').textContent = t.acadProj3.description;
+            }
+            if (acadProjs[3]) {
+                acadProjs[3].querySelector('strong').textContent = t.acadProj4.title;
+                acadProjs[3].querySelector('p').textContent = t.acadProj4.description;
+            }
+            if (acadProjs[4]) {
+                acadProjs[4].querySelector('strong').textContent = t.acadProj5.title;
+                acadProjs[4].querySelector('p').textContent = t.acadProj5.description;
+            }
+            
+            // Education
+            const eduItems = document.querySelectorAll('.education-item');
+            if (eduItems[0]) {
+                eduItems[0].querySelector('h3').textContent = t.edu1.title;
+                eduItems[0].querySelector('.education-meta').textContent = t.edu1.meta;
+                const eduP = eduItems[0].querySelector('p[style*="color: var(--text-secondary)"]');
+                if (eduP) eduP.textContent = t.edu1.thesis;
+            }
+            if (eduItems[1]) {
+                eduItems[1].querySelector('h3').textContent = t.edu2.title;
+                eduItems[1].querySelector('.education-meta').textContent = t.edu2.meta;
+                const eduP = eduItems[1].querySelector('p[style*="color: var(--text-secondary)"]');
+                if (eduP) eduP.textContent = t.edu2.thesis;
+            }
+        }
+    </script>
 </body>
 </html>
