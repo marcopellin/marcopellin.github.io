@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marco Pellin - Software Development Team Lead specializing in team management, agile methodologies, and embedded Linux development">
+    <title>Marco Pellin - Team Lead & Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151932;
+            --bg-card: #1a1f3a;
+            --accent: #00d9ff;
+            --accent-hover: #00b8d4;
+            --text-primary: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --border: #2a2f4a;
+            --success: #22c55e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-secondary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 3rem;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero .about {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .experience-title h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-title .company {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .experience-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Education & Certifications */
+        .education-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .education-item, .cert-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .education-item h3, .cert-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .education-meta {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        footer .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        footer .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0 2rem;
+                min-height: auto;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .experience-date {
+                white-space: normal;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--success);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            margin-left: 0.5rem;
+        }
+
+        .academic-projects {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .academic-projects h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .academic-projects ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .academic-projects li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .academic-projects li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .academic-projects strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .academic-projects p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .publications {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .publications h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .publication-item {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .publication-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .publication-item strong {
+            color: var(--text-primary);
+        }
+
+        .publication-item em {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">Marco Pellin</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container" id="about">
+            <h1>Software Development Team Lead</h1>
+            <p class="subtitle">Manager • Agile Practitioner • Embedded Linux Developer</p>
+            <p class="about">
+                Software Development Team Lead con esperienza consolidata nella gestione di team e progetti software. 
+                Credo fermamente che team motivati, con la giusta pianificazione e comunicazione efficace con clienti 
+                e fornitori, portino a prodotti solidi e di valore. Background tecnico in sviluppo embedded Linux, Qt e C++.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://www.linkedin.com/in/marcopellin/" target="_blank" class="btn btn-primary">LinkedIn</a>
+                <a href="https://github.com/marcopellin" target="_blank" class="btn btn-secondary">GitHub</a>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="container">
+            <h2 class="section-title">Esperienza Professionale</h2>
+            <p class="section-subtitle">Il mio percorso da developer a team lead</p>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3>Software Development Team Lead <span class="status-badge">Current</span></h3>
+                        <p class="company">Enetec - your OEM Partner</p>
+                    </div>
+                    <div class="experience-date">Gen 2021 - Presente · 4 anni</div>
+                </div>
+                <p class="experience-description">
+                    Responsabile del team di sviluppo software e della gestione dei progetti. Coordino le attività 
+                    del team, pianificazione agile, gestione delle relazioni con clienti e fornitori, e supervisione 
+                    tecnica dei prodotti. Riferimento diretto per il responsabile del dipartimento tecnico.
+                </p>
+                <div class="skills-tags">
+                    <span class="tag">Team Management</span>
+                    <span class="tag">Agile Methodologies</span>
+                    <span class="tag">Software Product Management</span>
+                    <span class="tag">Project Planning</span>
+                    <span class="tag">Stakeholder Management</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3>Software Developer</h3>
+                        <p class="company">Enetec</p>
+                    </div>
+                    <div class="experience-date">Apr 2017 - Presente · 8 anni</div>
+                </div>
+                <p class="experience-description">
+                    Sviluppo di interfacce utente per sistemi Linux embedded utilizzando Qt framework. 
+                    Gestione periferiche di rete (Ethernet, Wi-Fi), comunicazioni seriali via Modbus (ASCII, RTU, TCP/IP), 
+                    connettività cloud tramite protocollo MQTT e Amazon Web Services (AWS). Esperienza con hardware 
+                    Z-Wave e ESP32.
+                </p>
+                <div class="skills-tags">
+                    <span class="tag">Embedded Linux</span>
+                    <span class="tag">Qt / QML</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">MQTT</span>
+                    <span class="tag">AWS</span>
+                    <span class="tag">Modbus</span>
+                    <span class="tag">Networking</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">Shell Scripting</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3>Software Developer</h3>
+                        <p class="company">ESA Automation</p>
+                    </div>
+                    <div class="experience-date">Lug 2015 - Mar 2017 · 1 anno 9 mesi</div>
+                </div>
+                <p class="experience-description">
+                    Sviluppatore Linux embedded del sistema ESA EW900 Data Manager, concentratore per il monitoraggio 
+                    dei consumi energetici da reti di smart meter distribuiti. Programmazione C/C++ della business logic, 
+                    gestione periferiche di rete (Ethernet, Wi-Fi, 3G/GPRS), comunicazioni Modbus RTU, filesystem 
+                    costruito con Yocto e gestione kernel.
+                </p>
+                <div class="skills-tags">
+                    <span class="tag">C/C++</span>
+                    <span class="tag">Embedded Linux</span>
+                    <span class="tag">Yocto</span>
+                    <span class="tag">Kernel Management</span>
+                    <span class="tag">Networking</span>
+                    <span class="tag">Modbus RTU</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3>Collaborator - Junior Researcher</h3>
+                        <p class="company">Fondazione Bruno Kessler (FBK)</p>
+                    </div>
+                    <div class="experience-date">Apr 2013 - Giu 2015 · 2 anni 3 mesi</div>
+                </div>
+                <p class="experience-description">
+                    Collaboratore nel gruppo SHINE (Speech and Acoustic Scene Analysis and Interpretation). 
+                    Studi sull'allineamento forzato di parlato e voce cantata. Programmazione C/C++ per lo sviluppo 
+                    di un sistema di Dialogue Management per il progetto europeo DIRHA (Distant-speech Interaction 
+                    for Robust Home Applications).
+                </p>
+                <div class="skills-tags">
+                    <span class="tag">C/C++</span>
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Speech Processing</span>
+                    <span class="tag">Research</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="container">
+            <h2 class="section-title">Progetti</h2>
+            <p class="section-subtitle">Side projects e sperimentazioni personali</p>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Table Football</h3>
+                    <p>Sito statico per il tracking delle partite di calcio balilla. Demo di applicazione web moderna e responsive.</p>
+                    <div class="project-links">
+                        <a href="https://marcopellin.github.io/table-football/" target="_blank" class="project-link">
+                            <span>🌐</span> Live Demo
+                        </a>
+                        <a href="https://github.com/marcopellin/table-football" target="_blank" class="project-link">
+                            <span>📁</span> GitHub Repo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Altri Progetti GitHub</h3>
+                    <p>Esplora i miei altri progetti e contributi open source sul mio profilo GitHub.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/marcopellin?tab=repositories" target="_blank" class="project-link">
+                            <span>📂</span> Tutti i Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="academic-projects">
+                <h3>Progetti Accademici</h3>
+                <ul>
+                    <li>
+                        <strong>Center of Pupil Detection from Images</strong>
+                        <p>
+                            Contributi alla ricerca nel campo della rilevazione del centro della pupilla da immagini.
+                        </p>
+                    </li>
+                    <li>
+                        <strong>A High Availability Locking Service</strong>
+                        <p>
+                            Servizio di locking ad alta disponibilità con architettura master-replica, sviluppato in C con RPC 
+                            su Linux. Obiettivo: garantire high availability attraverso un set fisso di server.
+                        </p>
+                    </li>
+                    <li>
+                        <strong>Digital Pedometer (eZ430-Chronos)</strong>
+                        <p>
+                            Sviluppo di un pedometro digitale sfruttando i dati dell'accelerometro del dispositivo 
+                            eZ430-Chronos e la sua programmabilità embedded in C.
+                        </p>
+                    </li>
+                    <li>
+                        <strong>Dissecting Skype</strong>
+                        <p>
+                            Reverse engineering delle funzionalità di Skype attraverso sniffing e analisi del traffico 
+                            generato dall'applicazione sulla macchina dell'utente.
+                        </p>
+                    </li>
+                    <li>
+                        <strong>SOTIS - Self-Organizing Traffic Information System</strong>
+                        <p>
+                            Contributi teorici innovativi alle comunicazioni V2V (Vehicle-to-Vehicle) e VANET 
+                            (Vehicular Ad-hoc Network) per scenari urbani.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="container">
+            <h2 class="section-title">Formazione</h2>
+            <p class="section-subtitle">Percorso accademico e certificazioni professionali</p>
+
+            <div class="education-grid">
+                <div class="education-item">
+                    <h3>Master's Degree in Telecommunications Engineering</h3>
+                    <p class="education-meta">Università degli Studi di Trento • 2010 - 2013 • Voto: 106/110</p>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Tesi: "Automatic segmentation of singing voice in phone units" - Segmentazione automatica 
+                        della voce cantata in unità fonetiche.
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Bachelor's Degree in Telecommunications Engineering</h3>
+                    <p class="education-meta">Università degli Studi di Trento • 2006 - 2010</p>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Tesi: "Caratterizzazione elettro-ottica di rivelatori di radiazioni 3D-DDTC"
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent); margin-top: 3rem; margin-bottom: 1.5rem; font-size: 1.8rem;">Certificazioni</h3>
+            
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <h3>Yocto Project and OpenEmbedded Development</h3>
+                    <p class="education-meta">Bootlin • Apr 2021</p>
+                </div>
+
+                <div class="cert-item">
+                    <h3>Software Processes and Agile Practice</h3>
+                    <p class="education-meta">Coursera • Ott 2020</p>
+                </div>
+
+                <div class="cert-item">
+                    <h3>Client Needs and Software Requirements</h3>
+                    <p class="education-meta">Coursera • Set 2020</p>
+                </div>
+
+                <div class="cert-item">
+                    <h3>Introduction to Software Product Management</h3>
+                    <p class="education-meta">Coursera • Set 2020</p>
+                </div>
+
+                <div class="cert-item">
+                    <h3>Linux Administration</h3>
+                    <p class="education-meta">Udemy • Giu 2016</p>
+                </div>
+
+                <div class="cert-item">
+                    <h3>Mastering Git</h3>
+                    <p class="education-meta">Udemy • Mar 2016</p>
+                </div>
+
+                <div class="cert-item">
+                    <h3>Shell Scripting</h3>
+                    <p class="education-meta">Udemy • Mar 2016</p>
+                </div>
+            </div>
+
+            <div class="publications">
+                <h3>Pubblicazioni Scientifiche</h3>
+                <div class="publication-item">
+                    <strong>G. Tryfou, M. Pellin, M. Omologo</strong> (2014)<br>
+                    "Time-frequency Reassigned Cepstral Coefficients for Phone-Level Speech Segmentation"<br>
+                    <em>European Signal Processing Conference (EUSIPCO 2014), Lisbon, Portugal</em>
+                </div>
+                <div class="publication-item">
+                    <strong>M. Ravanelli, L. Cristoforetti, R. Gretter, M. Pellin, A. Sosi, M. Omologo</strong> (2015)<br>
+                    "The DIRHA-English corpus and related tasks for distant-speech recognition in domestic environments"<br>
+                    <em>ASRU 2015, Scottsdale, Arizona, USA</em>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container">
+            <h2 class="section-title">Contatti</h2>
+            <p class="section-subtitle">Restiamo in contatto</p>
+            
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 3rem; text-align: center;">
+                <p style="font-size: 1.2rem; color: var(--text-primary); margin-bottom: 2rem;">
+                    Interessato a collaborare o vuoi semplicemente fare una chiacchierata?
+                </p>
+                <div class="cta-buttons" style="justify-content: center;">
+                    <a href="https://www.linkedin.com/in/marcopellin/" target="_blank" class="btn btn-primary">LinkedIn</a>
+                    <a href="https://github.com/marcopellin" target="_blank" class="btn btn-secondary">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/marcopellin/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/marcopellin" target="_blank">GitHub</a>
+            </div>
+            <p>&copy; 2025 Marco Pellin. Bolzano, Trentino-Alto Adige, Italia</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Software Development Team Lead | Embedded Linux | Agile Methodologies</p>
+        </div>
+    </footer>
+</body>
+</html>
